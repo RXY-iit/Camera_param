@@ -1,5 +1,5 @@
 ################################################################################
-# Exposure_gain_auto Makefile
+# Exposure_gain_loca_base Makefile
 # reference link of chatGPT:
 # https://chatgpt.com/share/e7e04cac-219f-4280-9b3c-5cc75f01ea39
 ################################################################################
@@ -22,7 +22,7 @@ OS = mac
 endif
 endif
 
-OUTPUTNAME = Exposure_gain_auto${D}
+OUTPUTNAME = Exposure_gain_loca_base${D}
 OUTDIR = /home/ruan-x/rsworkSpace/src/acquisition/bin
 
 ################################################################################
@@ -33,12 +33,13 @@ SPINNAKER_LIB = -L/opt/spinnaker/lib -lSpinnaker${D} ${SPIN_DEPS}
 
 # OpenCV deps
 OPENCV_INC = -I/usr/include/opencv4
-OPENCV_LIB = -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc
+OPENCV_LIB = -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc -lopencv_videoio -lSpinnaker
+
 
 ################################################################################
 # Master inc/lib/obj/dep settings
 ################################################################################
-_OBJ = Exposure_gain_auto.o
+_OBJ = Exposure_gain_loca_base.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 INC = -I../../include ${OPENCV_INC}
 ifneq ($(OS),mac)

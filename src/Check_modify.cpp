@@ -16,8 +16,10 @@ void calcHistogram(const Mat& image, Mat& hist) {
 
 // Function to draw and display the histogram with coordinate annotations
 Mat drawHistogram(const Mat& hist) {
-    int histHeight = 400;
-    int histWidth = 512;
+    // int histHeight = 400;
+    // int histWidth = 512;
+    int histHeight = 300;
+    int histWidth = 312;
     Mat histImage(histHeight + 50, histWidth + 50, CV_8UC1, Scalar(255)); // Increased size for annotations
     normalize(hist, hist, 0, histHeight, NORM_MINMAX);
 
@@ -71,9 +73,9 @@ int main(int argc, char** argv) {
     // string folderPath = "/home/ruan-x/rsworkSpace/src/acquisition/output";
     string folderPath = "/home/ruan-x/Videos";
     vector<String> imagePaths;
-    // glob(folderPath + "/*.jpg", imagePaths, false);
+    glob(folderPath + "/*.jpg", imagePaths, false);
     // glob(folderPath + "/*.png", imagePaths, false);
-    glob(folderPath + "/*.pgm", imagePaths, false); 
+    // glob(folderPath + "/*.pgm", imagePaths, false); 
 
     size_t currentIndex = 0;
     while (currentIndex < imagePaths.size()) {
@@ -122,7 +124,8 @@ int main(int argc, char** argv) {
         if (key == ' ') {
             currentIndex++;
         } else if (key == 's') {
-            string outputPath = "/home/ruan-x/rsworkSpace/src/acquisition/analysis/example2_auto_" + to_string(currentIndex) + ".png";
+            string outputPath = "/home/ruan-x/rsworkSpace/src/acquisition/analysis/test_" + to_string(currentIndex) + ".png";
+            // string outputPath = "/home/ruan-x/Pictures/Factor_analysis/result_" + to_string(currentIndex) + ".png";
             imwrite(outputPath, resultImage);
             cout << "Result saved to " << outputPath << endl;
         }
